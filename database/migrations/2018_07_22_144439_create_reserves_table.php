@@ -1,8 +1,8 @@
 <?php
 
-use Illuminate\Support\Facades\Schema;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
 
 class CreateReservesTable extends Migration
 {
@@ -15,6 +15,11 @@ class CreateReservesTable extends Migration
     {
         Schema::create('reserves', function (Blueprint $table) {
             $table->increments('id');
+
+            $table->string('s.id')->unique();
+            $table->string('f.id')->unique();
+            $table->string('d.id')->unique();
+
             $table->timestamps();
         });
     }

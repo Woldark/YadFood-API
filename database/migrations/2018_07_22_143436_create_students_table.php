@@ -1,8 +1,8 @@
 <?php
 
-use Illuminate\Support\Facades\Schema;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
 
 class CreateStudentsTable extends Migration
 {
@@ -15,10 +15,12 @@ class CreateStudentsTable extends Migration
     {
         Schema::create('students', function (Blueprint $table) {
             $table->increments('id');
+
             $table->string('name');
-            $table->string('student_id');
-            $table->string('food_id');
+            $table->string('student_id')->unique();
+            $table->string('food_id')->unique();
             $table->string('password');
+
             $table->timestamps();
         });
     }
