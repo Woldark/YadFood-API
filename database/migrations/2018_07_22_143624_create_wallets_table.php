@@ -18,8 +18,11 @@ class CreateWalletsTable extends Migration
 
             $table->string('number');
             $table->string('amount')->nullable();
+            $table->integer('student_id')->unsigned()->index()->nullable();
 
             $table->timestamps();
+
+            $table->foreign('student_id')->references('id')->on('students');
         });
     }
 

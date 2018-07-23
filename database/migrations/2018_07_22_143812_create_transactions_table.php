@@ -18,8 +18,13 @@ class CreateTransactionsTable extends Migration
 
             $table->string('amount')->nullable();
             $table->date('date')->unique();
+            $table->integer('student_id')->unsigned()->index()->nullable();
+            $table->integer('wallet_id')->unsigned()->index()->nullable();
 
             $table->timestamps();
+
+            $table->foreign('student_id')->references('id')->on('students');
+            $table->foreign('wallet_id')->references('id')->on('wallets');
         });
     }
 

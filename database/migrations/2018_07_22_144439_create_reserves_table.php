@@ -16,9 +16,11 @@ class CreateReservesTable extends Migration
         Schema::create('reserves', function (Blueprint $table) {
             $table->increments('id');
 
-            $table->string('s.id')->unique();
-            $table->string('f.id')->unique();
-            $table->string('d.id')->unique();
+            $table->string('s_id')->unique();
+            $table->string('f_id')->unique();
+            $table->string('d_id')->unique();
+            $table->string('create_date');
+            $table->string('update_date')->nullable();
 
             $table->timestamps();
         });

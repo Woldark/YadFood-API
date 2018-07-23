@@ -19,8 +19,11 @@ class CreateFoodsTable extends Migration
             $table->string('name')->unique();
             $table->string('price');
             $table->string('count');
+            $table->integer('restaurant_id')->unsigned()->index()->nullable();
 
             $table->timestamps();
+
+            $table->foreign('restaurant_id')->references('id')->on('foods');
         });
     }
 
