@@ -19,10 +19,13 @@ class CreateReservesTable extends Migration
             $table->string('s_id')->unique();
             $table->string('f_id')->unique();
             $table->string('d_id')->unique();
+            $table->integer('transaction_id')->unsigned()->index()->nullable();
+
             $table->string('create_date');
             $table->string('update_date')->nullable();
-
             $table->timestamps();
+
+            $table->foreign('transaction_id')->references('transactions')->on('id');
         });
     }
 

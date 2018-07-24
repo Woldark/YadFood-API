@@ -7,8 +7,13 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Food extends Model
 {
-    public function restaurant():BelongsTo
+    public function restaurant(): BelongsTo
     {
         return $this->belongsTo(Restaurant::class, 'restaurant_id');
+    }
+
+    public function days()
+    {
+        return $this->belongsToMany(Day::class);
     }
 }

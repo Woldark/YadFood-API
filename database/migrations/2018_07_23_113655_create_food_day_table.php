@@ -1,8 +1,8 @@
 <?php
 
-use Illuminate\Support\Facades\Schema;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
 
 class CreateFoodDayTable extends Migration
 {
@@ -15,6 +15,9 @@ class CreateFoodDayTable extends Migration
     {
         Schema::create('food_day', function (Blueprint $table) {
             $table->increments('id');
+            $table->integer('food_id')->unsigned();
+            $table->integer('day_id')->unsigned();
+
             $table->timestamps();
         });
     }

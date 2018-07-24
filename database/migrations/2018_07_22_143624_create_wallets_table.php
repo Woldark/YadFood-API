@@ -21,6 +21,8 @@ class CreateWalletsTable extends Migration
             $table->integer('student_id')->unsigned()->index()->nullable();
 
             $table->timestamps();
+            $table->string('create_date');
+            $table->string('update_date')->nullable();
 
             $table->foreign('student_id')->references('id')->on('students');
         });

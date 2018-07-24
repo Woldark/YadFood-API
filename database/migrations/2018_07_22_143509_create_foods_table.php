@@ -22,6 +22,8 @@ class CreateFoodsTable extends Migration
             $table->integer('restaurant_id')->unsigned()->index()->nullable();
 
             $table->timestamps();
+            $table->string('create_date');
+            $table->string('update_date')->nullable();
 
             $table->foreign('restaurant_id')->references('id')->on('foods');
         });

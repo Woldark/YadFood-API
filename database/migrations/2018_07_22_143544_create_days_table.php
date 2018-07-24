@@ -22,6 +22,8 @@ class CreateDaysTable extends Migration
             $table->date('close')->nullable();
 
             $table->timestamps();
+            $table->string('create_date');
+            $table->string('update_date')->nullable();
         });
     }
 

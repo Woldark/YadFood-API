@@ -11,7 +11,7 @@
 |
 */
 Route::resources([
-    
+
     'students' => 'API\StudentController',
 
 ]);

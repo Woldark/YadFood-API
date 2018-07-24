@@ -19,6 +19,8 @@ class CreateRestaurantsTable extends Migration
             $table->string('name')->unique();
 
             $table->timestamps();
+            $table->string('create_date');
+            $table->string('update_date')->nullable();
         });
     }
 
