@@ -13,5 +13,10 @@
 Route::resources([
 
     'students' => 'API\StudentController',
+    'foods' => 'API\FoodController',
+    'reserves' => 'API\ReserveController',
+    'restaurants' => 'API\RestaurantController',
+    'transactions' => 'API\TransactionController',
+    'wallets' => 'API\WalletController'
 
 ]);
