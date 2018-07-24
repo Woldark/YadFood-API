@@ -1,8 +1,8 @@
 <?php
 
-use Illuminate\Support\Facades\Schema;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
 
 class CreateFoodsTable extends Migration
 {
@@ -15,7 +15,17 @@ class CreateFoodsTable extends Migration
     {
         Schema::create('foods', function (Blueprint $table) {
             $table->increments('id');
+
+            $table->string('name')->unique();
+            $table->string('price');
+            $table->string('count');
+            $table->integer('restaurant_id')->unsigned()->index()->nullable();
+
             $table->timestamps();
+            $table->string('create_date');
+            $table->string('update_date')->nullable();
+
+            $table->foreign('restaurant_id')->references('id')->on('foods');
         });
     }
 

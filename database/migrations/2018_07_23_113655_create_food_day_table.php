@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateUsersTable extends Migration
+class CreateFoodDayTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,17 +13,11 @@ class CreateUsersTable extends Migration
      */
     public function up()
     {
-        Schema::create('users', function (Blueprint $table) {
+        Schema::create('food_day', function (Blueprint $table) {
             $table->increments('id');
+            $table->integer('food_id')->unsigned();
+            $table->integer('day_id')->unsigned();
 
-            $table->string('name');
-            $table->string('username')->unique();
-            $table->string('password');
-
-            $table->rememberToken();
-
-            $table->string('create_date');
-            $table->string('update_date')->nullable();
             $table->timestamps();
         });
     }
@@ -35,6 +29,6 @@ class CreateUsersTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('users');
+        Schema::dropIfExists('food_day');
     }
 }
