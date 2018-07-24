@@ -1,13 +1,15 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\API;
 
+use App\Libraries\JDF;
+use Illuminate\Routing\Controller;
 use App\Student;
 use Illuminate\Http\Request;
 
 class StudentController extends Controller
 {
-    public function login2(Request $request)
+    public function login(Request $request)
     {
         $username = $request->get('username');
         $password = $request->get('password');
@@ -79,10 +81,13 @@ class StudentController extends Controller
 
         $student = new Student();
 
+        $jdf= new JDF();
+
         $student->name = $name;
         $student->student_id = $student_id;
         $student->food_id = $food_id;
         $student->password = $food_id;
+        $student->create_date = $jdf->getTimestamp();
         $student->save();
 
         if ($student)
