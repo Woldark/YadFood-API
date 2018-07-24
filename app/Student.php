@@ -6,6 +6,7 @@ use Illuminate\Auth\Authenticatable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class Student extends Model
 {
@@ -16,8 +17,8 @@ class Student extends Model
         return $this->hasMany(Transaction::class, 'student_id');
     }
 
-    public function wallet() : BelongsTo
+    public function wallet() : HasOne
     {
-        return $this->belongsTo(Wallet::class, 'wallet_id');
+        return $this->hasOne(Wallet::class, 'student_id');
     }
 }

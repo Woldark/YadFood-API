@@ -7,8 +7,6 @@ use Illuminate\Http\Request;
 
 class StudentController extends Controller
 {
-
-
     public function login2(Request $request)
     {
         $username = $request->get('username');
@@ -51,4 +49,72 @@ class StudentController extends Controller
             'error' => false
         ], 200);
     }
+
+    public function index()
+    {
+        $students = Student::all();
+
+        return response()->json([
+            'error' => false,
+            'students' => $students
+        ], 200);
+    }
+
+    public function show($student)
+    {
+        $student = Student::find($student);
+
+        return response()->json([
+            'error' => false,
+            'student' => $student
+        ], 200);
+    }
+
+    public function store(Request $request)
+    {
+
+        $name = $request->get('name');
+        $student_id = $request->get('student_id');
+        $food_id = $request->get('food_id');
+
+        $student = new Student();
+
+        $student->name = $name;
+        $student->student_id = $student_id;
+        $student->food_id = $food_id;
+        $student->password = $food_id;
+        $student->save();
+
+        if ($student)
+            return response()->json([
+                'error' => false
+            ], 200);
+        else
+            return response()->json([
+                'error' => true,
+                'error_msg' => 'خطا بوجود آمده است !!'
+            ], 200);
+    }
+
+    public function update(Request $request, $student)
+    {
+        $name = $request->get('name');
+        $student_id = $request->get('student_id');
+        $food_id = $request->get('food_id');
+
+        $student = Student::find($student);
+
+        $student->name = $name;
+        $student->student_id = $student_id;
+        $student->food_id = $food_id;
+
+        $student->save();
+
+        return response()->json([
+            'error' => false
+        ], 200);
+
+
+    }
+
 }
