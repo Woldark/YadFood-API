@@ -18,7 +18,7 @@ class CreateFoodsTable extends Migration
 
             $table->string('name')->unique();
             $table->string('price');
-            $table->string('count');
+            $table->string('count')->default('1');
             $table->integer('restaurant_id')->unsigned()->index()->nullable();
 
             $table->timestamps();

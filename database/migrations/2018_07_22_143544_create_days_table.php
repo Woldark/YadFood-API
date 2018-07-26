@@ -18,7 +18,7 @@ class CreateDaysTable extends Migration
 
             $table->string('name')->unique();
             $table->date('date');
-            $table->date('holiday');
+            $table->date('holiday')->default('0');
             $table->date('close')->nullable();
 
             $table->timestamps();

@@ -4,6 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class Food extends Model
 {
@@ -12,7 +13,7 @@ class Food extends Model
         return $this->belongsTo(Restaurant::class, 'restaurant_id');
     }
 
-    public function days()
+    public function days() : BelongsToMany
     {
         return $this->belongsToMany(Day::class);
     }
