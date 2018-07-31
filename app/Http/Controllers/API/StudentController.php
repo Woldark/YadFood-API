@@ -122,4 +122,13 @@ class StudentController extends Controller
 
     }
 
+    public function destroy($student){
+        $student = Student::find($student);
+        $student->delete();
+
+        return response()->json([
+            'error'=>false
+        ],200);
+    }
+
 }

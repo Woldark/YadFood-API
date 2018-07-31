@@ -19,4 +19,7 @@ Route::resources([
     'wallets' => 'API\WalletController'
 ]);
 
-Route::post('/login','API\StudentController@login');
+Route::post('/login', 'API\StudentController@login');
+
+Route::get('/getStudentTrans/{id}', 'API\TransactionController@student_transactions');
+Route::get('/getWalletTrans/{id}', 'API\TransactionController@wallet_transactions');
