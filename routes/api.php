@@ -23,3 +23,4 @@ Route::post('/login', 'API\StudentController@login');
 
 Route::get('/getStudentTrans/{id}', 'API\TransactionController@student_transactions');
 Route::get('/getWalletTrans/{id}', 'API\TransactionController@wallet_transactions');
+Route::get('/reserve', 'API\ReserveController@save');

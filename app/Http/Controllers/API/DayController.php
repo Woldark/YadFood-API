@@ -3,20 +3,24 @@
 namespace App\Http\Controllers\API;
 
 use App\Day;
+use App\Food;
 use App\Libraries\JDF;
+use App\Reserve;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 
 class DayController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $day = Day::find();
+        $days = Day::find();
+
+        $days = $this->checkReserves($days, $request->get('id'));
 
         return response()->json([
             'error' => false,
-            'day' => $day,
-            'foods' => $day->foods
+            'day' => $days,
+            'foods' => $days->foods
         ], 200);
     }
 
@@ -61,5 +65,21 @@ class DayController extends Controller
         return response()->json([
             'error' => false
         ], 200);
+    }
+
+    public function checkReserves($days, $s_id)
+    {
+        foreach ($days as $day) {
+            $reserve = Reserve::where("d_id", $day->id)->where("s_id", $s_id)->get();
+            if ($reserve) {
+                $i = 0;
+                foreach ($reserve as $r) {
+                    $food = Food::find($r->f_id)->first();
+                    $day["f_" . $i] = $food->name;
+                }
+            } else {
+                $day["f"] = "null";
+            }
+        }
     }
 }
