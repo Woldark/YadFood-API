@@ -13,7 +13,7 @@ class DayController extends Controller
 {
     public function index(Request $request)
     {
-        $days = Day::find();
+        $days = Day::all();
 
         $days = $this->checkReserves($days, $request->get('id'));
 
