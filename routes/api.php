@@ -13,7 +13,6 @@
 Route::resources([
     'students' => 'API\StudentController',
     'foods' => 'API\FoodController',
-    'days' => 'API\DayController',
     'reserves' => 'API\ReserveController',
     'restaurants' => 'API\RestaurantController',
     'transactions' => 'API\TransactionController',
@@ -21,6 +20,7 @@ Route::resources([
 ]);
 
 Route::post('/login', 'API\StudentController@login');
+Route::post('/daysOfWeek', 'API\DayController@index');
 
 Route::get('/getStudentTrans/{id}', 'API\TransactionController@student_transactions');
 Route::get('/getWalletTrans/{id}', 'API\TransactionController@wallet_transactions');
