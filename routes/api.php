@@ -13,6 +13,7 @@
 Route::resources([
     'students' => 'API\StudentController',
     'foods' => 'API\FoodController',
+    'days' => 'API\DayController',
     'reserves' => 'API\ReserveController',
     'restaurants' => 'API\RestaurantController',
     'transactions' => 'API\TransactionController',
