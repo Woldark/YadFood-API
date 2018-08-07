@@ -2,7 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use Carbon\Carbon;
+use Faker\Factory as Faker;
 
 class HomeController extends Controller
 {
@@ -13,7 +14,7 @@ class HomeController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth');
+//        $this->middleware('auth');
     }
 
     /**
@@ -23,6 +24,21 @@ class HomeController extends Controller
      */
     public function index()
     {
+        $faker = Faker::create();
+        $startDate = Carbon::now();
+
+        $dates = array();
+        for ($i = 1; $i <= 31; $i++) {
+            $date = "2018-08-" . $i . " 0:0:0";
+            $d=Carbon::createFromTimeString($date);
+            $dates[]=$d;
+        }
+        $dates2 = array();
+        foreach ($dates as $date){
+            $dates2[] = explode(' ' ,(string)$date)[0];
+        }
+
+        return $dates2;
         return view('home');
     }
 }
