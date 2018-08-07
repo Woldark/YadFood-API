@@ -1,12 +1,12 @@
 <?php
 
 use Carbon\Carbon;
-use Faker\Factory as Faker;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
 {
-    protected  $index;
+    protected $index;
+
     /**
      * Seed the application's database.
      *
@@ -14,15 +14,19 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        $index =0;
+        $index = 0;
         $jdf = new \App\Libraries\JDF();
+
+        factory(\App\Student::class, 1)->create([
+            'create_date' => $jdf->getTimestamp()
+        ]);
 
         factory(\App\Restaurant::class, 1)->create([
             'create_date' => $jdf->getTimestamp()
         ])->each(function (\App\Restaurant $restaurant) {
             $jdf = new \App\Libraries\JDF();
             factory(\App\Food::class, 21)->create([
-                'restaurant_id'=>$restaurant->id,
+                'restaurant_id' => $restaurant->id,
                 'create_date' => $jdf->getTimestamp()
             ]);
         });
@@ -46,6 +50,9 @@ class DatabaseSeeder extends Seeder
             $this->index++;
         }
 
+        factory(\App\Reserve::class, 15)->create([
+            'create_date' => $jdf->getTimestamp()
+        ]);
 
     }
 }
