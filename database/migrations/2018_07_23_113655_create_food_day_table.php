@@ -13,7 +13,7 @@ class CreateFoodDayTable extends Migration
      */
     public function up()
     {
-        Schema::create('food_day', function (Blueprint $table) {
+        Schema::create('day_food', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('food_id')->unsigned();
             $table->integer('day_id')->unsigned();

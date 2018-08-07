@@ -16,10 +16,10 @@ class CreateReservesTable extends Migration
         Schema::create('reserves', function (Blueprint $table) {
             $table->increments('id');
 
-            $table->string('s_id')->unique();
-            $table->string('f_id')->unique();
-            $table->string('d_id')->unique();
-
+            $table->string('s_id');
+            $table->string('f_id');
+            $table->string('d_id');
+            $table->enum('meal', [1, 2, 3]);
 
             $table->string('create_date');
             $table->string('update_date')->nullable();

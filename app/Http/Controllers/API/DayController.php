@@ -19,8 +19,8 @@ class DayController extends Controller
 
         return response()->json([
             'error' => false,
-            'day' => $days,
-            'foods' => $days->foods
+            'day' => $days
+//            'foods' => $days->foods
         ], 200);
     }
 
@@ -69,17 +69,26 @@ class DayController extends Controller
 
     public function checkReserves($days, $s_id)
     {
+        $finalDays = array();
         foreach ($days as $day) {
-            $reserve = Reserve::where("d_id", $day->id)->where("s_id", $s_id)->get();
-            if ($reserve) {
-                $i = 0;
+            $reserve = Reserve::where([
+                ["d_id", "=", $day->id],
+                ["s_id", "=", $s_id]
+            ])->get();
+
+            if (count($reserve) > 0) {
                 foreach ($reserve as $r) {
                     $food = Food::find($r->f_id)->first();
-                    $day["f_" . $i] = $food->name;
+                    $day["f"] .= $food->name . '(' . $r->meal . '),';
                 }
+                $day['f'] = rtrim($day['f'], ',');
+                array_push($finalDays, $day);
             } else {
                 $day["f"] = "null";
+                array_push($finalDays, $day);
             }
         }
+
+        return $finalDays;
     }
 }
