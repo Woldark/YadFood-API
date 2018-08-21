@@ -22,12 +22,22 @@ class FoodController extends Controller
 
     public function daysFood($id)
     {
-        $food = Food::find($id);
+        $day = Day::where('id', $id)->first();
 
         return response()->json([
             'error' => false,
-            'foods' => $food->days
+            'foods' => $day->foods
         ], 200);
+    }
+
+    public function FoodOfDay($id)
+    {
+        $foods = Food::where('day_id', $id)->get();
+
+        return response()->json([
+            'error' => false,
+            'Foods' => $foods
+        ]);
     }
 
     public function create(Request $request)

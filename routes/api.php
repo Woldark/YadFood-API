@@ -21,6 +21,8 @@ Route::resources([
 
 Route::post('/login', 'API\StudentController@login');
 Route::post('/daysOfWeek', 'API\DayController@index');
+Route::get('/FoodOfDay/{id}', 'API\FoodController@FoodOfDay');
+Route::get('/daysFood/{id}', 'API\FoodController@daysFood');
 
 Route::get('/getStudentTrans/{id}', 'API\TransactionController@student_transactions');
 Route::get('/getWalletTrans/{id}', 'API\TransactionController@wallet_transactions');
