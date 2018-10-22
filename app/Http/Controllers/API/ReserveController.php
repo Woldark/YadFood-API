@@ -24,6 +24,7 @@ class ReserveController extends Controller
         $s_id = $request->get('s_id');
         $f_id = $request->get('f_id');
         $d_id = $request->get('d_id');
+        $meal = $request->get('meal');
 
         $reserve = new Reserve();
         $jdf = new JDF();
@@ -31,6 +32,7 @@ class ReserveController extends Controller
         $reserve->s_id = $s_id;
         $reserve->f_id = $f_id;
         $reserve->d_id = $d_id;
+        $reserve->meal = $meal;
         $reserve->create_date = $jdf->getTimestamp();
         $reserve->save();
 
