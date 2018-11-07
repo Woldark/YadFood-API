@@ -26,4 +26,4 @@ Route::get('/daysFood/{id}', 'API\FoodController@daysFood');
 
 Route::get('/getStudentTrans/{id}', 'API\TransactionController@student_transactions');
 Route::get('/getWalletTrans/{id}', 'API\TransactionController@wallet_transactions');
-Route::get('/reserve', 'API\ReserveController@save');
+Route::post('/reserve', 'API\ReserveController@save');
