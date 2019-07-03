@@ -78,7 +78,7 @@ class DayController extends Controller
 
             if (count($reserve) > 0) {
                 foreach ($reserve as $r) {
-                    $food = Food::find($r->f_id)->first();
+                    $food = Food::where("id", $r->f_id)->first();
                     $day["f"] .= $food->name . '(' . $r->meal . '),';
                 }
                 $day['f'] = rtrim($day['f'], ',');
